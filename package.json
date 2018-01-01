@@ -10,7 +10,11 @@
         "build": "node build/build.js"
     },
     "dependencies": {
+        "axios": "^0.17.1",
+        "mock.js": "^0.2.0",
+        "swiper": "^4.0.7",
         "vue": "^2.5.2",
+        "vue-awesome-swiper": "^3.0.7",
         "vue-router": "^3.0.1"
     },
     "devDependencies": {

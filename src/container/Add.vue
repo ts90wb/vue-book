@@ -1,24 +1,24 @@
-<!-- by your name -->
 <template>
-  <div>添加页</div>
+    <div>
+<m-header title="添加页"></m-header>
+    </div>
 </template>
-
 <script>
-export default {
-  data () {
-    return {
-    };
-  },
+import MHeader from 'components/MHeader';
+    export default {
+        data(){
+            return {}
+        },
+        created(){
 
-  components: {},
+        },
+        computed: {},
+        components: {MHeader},
+        methods: {
 
-  computed: {},
-
-  mounted: {},
-
-  methods: {}
-}
-
+    }
+    }
 </script>
-<style lang='css' scoped>
+<style scoped lang="less">
+
 </style>

@@ -9,6 +9,7 @@ import Add from 'container/Add'
 Vue.use(Router)
 
 export default new Router({
+
     routes: [{
             path: '/home',
             component: Home

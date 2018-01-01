@@ -1,0 +1,37 @@
+[{
+        "bookName": "白日美人",
+        "id": 1,
+        "content": "路易斯·布努埃尔执导、凯瑟琳·德纳芙主演，再现银幕经典记忆，金狮奖影片同名原著",
+        "bookCover": "http://image12.bookschina.com/2014/20140514/s5820917.jpg"
+    },
+    {
+        "bookName": "地疤",
+        "id": 2,
+        "content": "柴纳·米耶维，当今英语世界知名的奇幻小说家，新怪谭风格开创者，被誉为“奇幻鬼才”",
+        "bookCover": "http://image12.bookschina.com/2013/20131106/s6313700.jpg"
+    },
+    {
+        "bookName": "众生安眠",
+        "id": 3,
+        "content": "《众生安眠》秉承冯内古特一贯的幽默，和他的其他小说一样，每个故事都是一则寓言",
+        "bookCover": "http://image12.bookschina.com/2014/20140305/s5904121.jpg"
+    },
+    {
+        "bookName": "郑板桥书法",
+        "id": 4,
+        "content": "本书收录清代著名画画家郑板桥的书法手迹，是为书法爱好者提供的一部研究和学习的工具书",
+        "bookCover": "http://image31.bookschina.com/2014/zuo/s6785925.jpg"
+    },
+    {
+        "bookName": "守日人",
+        "id": 5,
+        "content": "《守日人》全球销量破一千万，令全世界屏息惊艳之奇幻大作。余秋雨题名推荐，斯皮尔伯格、昆汀·塔伦蒂诺为之倾倒",
+        "bookCover": "http://image31.bookschina.com/Small/69/86/2472869.jpg"
+    },
+    {
+        "bookName": "守日人",
+        "id": 6,
+        "content": "《守日人》全球销量破一千万，令全世界屏息惊艳之奇幻大作。余秋雨题名推荐，斯皮尔伯格、昆汀·塔伦蒂诺为之倾倒",
+        "bookCover": "http://image31.bookschina.com/Small/69/86/2472869.jpg"
+    }
+]

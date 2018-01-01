@@ -2,25 +2,22 @@
 <template>
 <div>
   <div></div>
+  <keep-alive>
   <router-view></router-view>
+  </keep-alive>
   <tab></tab>
 </div>
 </template>
 
 <script>
-import Tab from './components/Tab'
+import Tab from 'components/Tab'
 export default {
   data () {
     return {
     };
   },
-
   components: {Tab},
-
   computed: {},
-
-  mounted: {},
-
   methods: {}
 }
 

@@ -1,24 +1,23 @@
 <!-- by your name -->
 <template>
-  <div>收藏页</div>
+  <div>
+   <m-header title="收藏页"></m-header>
+  </div>
 </template>
 
 <script>
+import MHeader from 'components/MHeader';
 export default {
   data () {
     return {
     };
   },
 
-  components: {},
-
+  components: {MHeader},
   computed: {},
-
-  mounted: {},
-
   methods: {}
 }
 
 </script>
-<style lang='css' scoped>
+<style lang='less' scoped>
 </style>

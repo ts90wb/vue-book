@@ -2,19 +2,31 @@
 <template>
   <nav>
 <router-link to="/home">
-<i class="iconfont icon-home"></i>
+<div class="switch">
+<i class="iconfont icon-home" v-show="!isShow"></i>
+<i class="iconfont icon-home-active" v-show=" swithIcon"></i>
+</div>
 <span>首页</span>
 </router-link>
 <router-link to="/list">
-<i class="iconfont icon-list"></i>
+<div class="switch">
+<i class="iconfont icon-list" v-show="!isShow"></i>
+<i class="iconfont icon-list-active" v-show=" swithIcon"></i>
+</div>
 <span>列表</span>
 </router-link>
 <router-link to="/collect">
-<i class="iconfont icon-star"></i>
+<div class="switch">
+<i class="iconfont icon-star" v-show="!isShow"></i>
+<i class="iconfont icon-star-active" v-show=" swithIcon"></i>
+</div>
 <span>收藏</span>
 </router-link>
 <router-link to="/add">
-<i class="iconfont icon-add"></i>
+<div class="switch">
+<i class="iconfont icon-add" v-show="!isShow"></i>
+<i class="iconfont icon-add-active" v-show="isShow">{{swithIcon}}</i>
+</div>
 <span>添加</span>
 </router-link>
   </nav>
@@ -24,20 +36,26 @@
 export default {
   data () {
     return {
-    };
+      isShow:false
+    }
   },
-
   components: {},
-
   computed: {},
-
-  mounted: {},
-
-  methods: {}
+  methods: {
+  swithIcon:function(){
+    let oLink=document.querySelectorAll('a');
+    for(let i=0,len=oLink.length;i<len,i++;){
+      oLink[i].onclick=()=>{
+      this.isShow=true;
+        console.log(this.isShow)
+      }
+    }
+  }
+  }
 }
 
 </script>
-<style lang='less' scoped>
+<style scoped lang='less'>
 nav{
   position: fixed;
   bottom: 0;
@@ -46,6 +64,7 @@ nav{
   display: flex;
   width: 100%;
 height: .8rem;
+background: white;
 font-size: .2rem;
 border-top: 1px solid #ccc;
   justify-content:space-around;
