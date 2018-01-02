@@ -1,33 +1,9 @@
 <!-- by your name -->
 <template>
-  <nav>
-<router-link to="/home">
-<div class="switch">
-<i class="iconfont icon-home" v-show="!isShow"></i>
-<i class="iconfont icon-home-active" v-show=" swithIcon"></i>
-</div>
-<span>首页</span>
-</router-link>
-<router-link to="/list">
-<div class="switch">
-<i class="iconfont icon-list" v-show="!isShow"></i>
-<i class="iconfont icon-list-active" v-show=" swithIcon"></i>
-</div>
-<span>列表</span>
-</router-link>
-<router-link to="/collect">
-<div class="switch">
-<i class="iconfont icon-star" v-show="!isShow"></i>
-<i class="iconfont icon-star-active" v-show=" swithIcon"></i>
-</div>
-<span>收藏</span>
-</router-link>
-<router-link to="/add">
-<div class="switch">
-<i class="iconfont icon-add" v-show="!isShow"></i>
-<i class="iconfont icon-add-active" v-show="isShow">{{swithIcon}}</i>
-</div>
-<span>添加</span>
+<nav>
+<router-link v-for="item in selectNav" :key="item.id" :to="item.path">
+<i  :class="isSelect===item.path?item.isActive:item.noActive"></i>
+<span>{{item.title}}</span>
 </router-link>
   </nav>
 </template>
@@ -36,21 +12,29 @@
 export default {
   data () {
     return {
-      isShow:false
+      isSelect: '/home',
+      selectNav:[
+        {id:1,path:'/home',title:'首页',isActive:'iconfont icon-home-active',noActive:'iconfont icon-home'},
+        {id:2,path:'/list',title:'列表',isActive:'iconfont icon-list-active',noActive:'iconfont icon-list'},
+        {id:3,path:'/collect',title:'收藏',isActive:'iconfont icon-star-active',noActive:'iconfont icon-star'},
+        {id:4,path:'/add',title:'添加',isActive:'iconfont icon-add-active',noActive:'iconfont icon-add'}
+      ]
     }
   },
-  components: {},
+  created(){
+this.swithIcon();
+  },
+  watch:{
+'$route':'swithIcon'
+  },
+  components: {
+
+  },
   computed: {},
   methods: {
   swithIcon:function(){
-    let oLink=document.querySelectorAll('a');
-    for(let i=0,len=oLink.length;i<len,i++;){
-      oLink[i].onclick=()=>{
-      this.isShow=true;
-        console.log(this.isShow)
-      }
+    this.isSelect=this.$route.path;
     }
-  }
   }
 }
 
@@ -80,9 +64,6 @@ i{
 }
 .active{
   color:orangered;
-  i{
-    color: blue;
-  }
 }
 }
 </style>
