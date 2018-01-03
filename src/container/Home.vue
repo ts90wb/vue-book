@@ -15,7 +15,6 @@
         </li>
       </ul>
       <loading v-if="isLoading.list"></loading>
-      <div class="blank"></div>
     </div>
 </template>
 <script>
@@ -99,8 +98,5 @@ height: 1.6rem;
   }
 }
 }
-.blank{
-  width: 100%;
-  height: .81rem;
-}
+
 </style>

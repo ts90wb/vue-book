@@ -5,3 +5,6 @@ export function getSliders() {
 export function getHot() {
     return axios.get('/api/hot');
 }
+export function getBook() {
+    return axios.get('/api/book');
+}

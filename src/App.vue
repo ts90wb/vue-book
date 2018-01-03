@@ -1,10 +1,10 @@
 <!-- by your name -->
 <template>
 <div>
-  <div></div>
   <keep-alive>
   <router-view></router-view>
   </keep-alive>
+        <div class="footer-blank"></div>
   <tab></tab>
 </div>
 </template>
@@ -23,4 +23,8 @@ export default {
 
 </script>
 <style lang='css' scoped>
+.footer-blank{
+  width: 100%;
+  height: .85rem;
+}
 </style>
