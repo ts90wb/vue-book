@@ -8,3 +8,6 @@ export function getHot() {
 export function getBook() {
     return axios.get('/api/book');
 }
+export function addBook(data) {
+    return axios.post('/api/book', data);
+}

@@ -2,16 +2,19 @@
 <template>
   <div>
 
-    <m-header title="列表页"></m-header>
+    <m-header title="列表页" ref="close"></m-header>
+    <scroller :on-refresh="refresh" ref="scroll">
       <ul class="list">
       <li v-for="item in books" :key="item.id">
         <img v-lazy="item.bookCover" alt="vue-book封面图片" width="138" height="200">
         <div>
           <h4>{{item.bookName}}</h4>
-          <span>{{item.content.slice(0,32)+"..."}}</span>
+          <span>{{item.content.length<=32?item.content:item.content.slice(0,32)+"..."}}</span>
         </div>
       </li>
     </ul>
+    <div class="tip">{{noData}}</div>
+    </scroller>
   </div>
 </template>
 
@@ -21,12 +24,14 @@ import MHeader from 'components/MHeader';
 export default {
   data () {
     return {
+      noData:'',
+      isShow:false,
       books:[]
     };
   },
 created(){
 getBook().then(res=>{
- this.books=res.data;
+ this.books=res.data.reverse();
 }).catch(err=>{
 console.log(err);
 })
@@ -34,8 +39,12 @@ console.log(err);
   components: {MHeader},
   computed: {},
   methods: {
-
+    refresh(){
+      this.$refs.scroll.finishPullToRefresh();
+      this.noData=this.$refs.scroll.noDataText;
+    }
   }
+
 }
 
 </script>
@@ -84,6 +93,8 @@ console.log(err);
     div{
        display: -webkit-flex;
     display: flex;
+    height: 1.4rem;
+    width: 2.2rem;
     margin-left: .1rem;
     padding: .1rem 0;
     box-sizing: border-box;
@@ -93,11 +104,13 @@ h4{
   height: .4rem;
   line-height: .4rem;
       font:bold .24rem 'HEITI';
+      text-align: left;
       color: #999;
 
     }
     span{
       margin-top: .1rem;
+      text-align: left;
       color: #666;
       font-size: .18rem;
       text-indent: .36rem;
@@ -105,5 +118,14 @@ h4{
     }
 
   }
+}
+.tip{
+  width: 100%;
+  height: .4rem;
+  margin-top: .1rem;
+  font-size: .18rem;
+  color: #999;
+  line-height: .4rem;
+  text-align: center;
 }
 </style>

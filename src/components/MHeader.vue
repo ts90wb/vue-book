@@ -1,7 +1,7 @@
 <!-- by your name -->
 <template>
  <header>
- {{title}}
+{{title}}
  </header>
 </template>
 
@@ -10,12 +10,14 @@ export default {
   props:['title'],
   data () {
     return {
+
     };
   },
 
   components: {},
   computed: {},
-  methods: {}
+  methods: {
+  }
 }
 
 </script>
@@ -34,5 +36,9 @@ header{
   font-family: 'KaiTi';
   text-align: center;
   z-index: 1000;
+  div{
+    width: .3rem;
+    height: .3rem;
+  }
 }
 </style>

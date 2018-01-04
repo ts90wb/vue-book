@@ -41,7 +41,8 @@ menu,
 nav,
 section {
     margin: 0;
-    padding: 0
+    padding: 0;
+    font-size: .14rem;
 }
 
 article,

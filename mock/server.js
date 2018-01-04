@@ -9,6 +9,10 @@ function read(callback) {
         callback(data);
     });
 }
+
+function write(data, callback) {
+    fs.writeFile("./book.json", JSON.stringify(data), callback);
+}
 http.createServer(function(req, res) {
         let { pathname, query } = url.parse(req.url, true);
         if (pathname === "/api/slider") {
@@ -28,6 +32,20 @@ http.createServer(function(req, res) {
                     })
                     break;
                 case "POST":
+                    let str = '';
+                    req.on('data', function(data) {
+                        str += data;
+                    });
+                    req.on('end', function() {
+                        var book = JSON.parse(str);
+                        read(function(books) {
+                            book.id = books.length > 0 ? books.length : 1;
+                            books.push(book);
+                            write(books, function() {
+                                res.end(JSON.stringify(book));
+                            })
+                        });
+                    })
                     break;
                 case "DELETE":
                     break;

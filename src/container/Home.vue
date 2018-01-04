@@ -78,17 +78,19 @@ ul{
   justify-content: space-around;
   flex-wrap: wrap;
 li{
+  display: -webkit-flex;
+  display: flex;
   width: 33.33%;
   padding: 0 .1rem;
   margin-top: .1rem;
+  flex-direction: column;
+  align-items: center;
   box-sizing: border-box;
   img{
-    float: left;
-width:100% ;
-height: 1.6rem;
+width:1rem ;
+height: 1.4rem;
   }
   span{
-    float: left;
     width: 100%;
     height: .4rem;
     line-height: .4rem;

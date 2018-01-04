@@ -4,32 +4,45 @@
 <div class="add">
 <div class="group">
   <label for="book-name">书名:</label>
-  <input type="text" id="book-name" placeholder="请输入书名">
+  <input type="text" id="book-name" placeholder="请输入书名" v-model="book.bookName">
 </div>
 <div class="group">
   <label for="book-cover">书的地址:</label>
-  <input type="text" id="book-cover" placeholder="请输入封面网址">
+  <input type="text" id="book-cover" placeholder="请输入封面网址" v-model="book.bookCover">
 </div>
 <div class="group">
   <label for="book-content">书的简介:</label>
-  <input type="text" id="book-content" placeholder="请输入书的简介">
+  <input type="text" id="book-content" placeholder="请输入书的简介" v-model="book.content">
 </div>
 </div>
 <div class="btn">
-<button>添加图书</button>
+<button @click="add">添加图书</button>
 </div>
     </div>
 </template>
 <script>
 import MHeader from "components/MHeader";
+import {addBook} from 'api';
 export default {
   data() {
-    return {};
+    return {
+      book:{
+        bookName:'',
+        bookCover:'',
+        content:''
+      }
+    };
   },
   created() {},
   computed: {},
   components: { MHeader },
-  methods: {}
+  methods: {
+    add(){
+addBook(this.book).then(res=>{
+this.$router.push('/list');
+});
+    }
+  }
 };
 </script>
 <style scoped lang="less">
