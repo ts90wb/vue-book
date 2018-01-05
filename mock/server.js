@@ -15,6 +15,7 @@ function write(data, callback) {
 }
 http.createServer(function(req, res) {
         let { pathname, query } = url.parse(req.url, true);
+        let _id = query.id;
         if (pathname === "/api/slider") {
             return res.end(JSON.stringify(sliders));
         }
@@ -48,6 +49,15 @@ http.createServer(function(req, res) {
                     })
                     break;
                 case "DELETE":
+                    read(function(books) {
+                        console.log(books.id);
+                        console.log(_id);
+                        books = books.filter(item => item.id != _id);
+                        write(books, function() {
+                            res.end(JSON.stringify({}));
+                        })
+
+                    });
                     break;
                 case "PUT":
                     break;

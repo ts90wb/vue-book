@@ -10,14 +10,22 @@ import MHeader from 'components/MHeader';
 export default {
   data () {
     return {
+
     };
   },
-
+mounted(){
+},
   components: {MHeader},
   computed: {},
-  methods: {}
+  methods: {
+
+  }
 }
 
 </script>
 <style lang='less' scoped>
+.el-input{
+  margin-top: 1.4rem;
+  margin-left: .2rem;
+}
 </style>

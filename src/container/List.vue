@@ -9,7 +9,8 @@
         <img v-lazy="item.bookCover" alt="vue-book封面图片" width="138" height="200">
         <div>
           <h4>{{item.bookName}}</h4>
-          <span>{{item.content.length<=32?item.content:item.content.slice(0,32)+"..."}}</span>
+          <span>{{item.content.length<=20?item.content:item.content.slice(0,20)+"..."}}</span>
+          <button @click="remove(item.id)">删除</button>
         </div>
       </li>
     </ul>
@@ -19,7 +20,7 @@
 </template>
 
 <script>
-import {getBook} from 'api';
+import {getBook,removeBook} from 'api';
 import MHeader from 'components/MHeader';
 export default {
   data () {
@@ -30,23 +31,35 @@ export default {
     };
   },
 created(){
-getBook().then(res=>{
- this.books=res.data.reverse();
-}).catch(err=>{
-console.log(err);
-})
+this.getList();
 },
   components: {MHeader},
   computed: {},
   methods: {
     refresh(){
+      this.getList();
       this.$refs.scroll.finishPullToRefresh();
       this.noData=this.$refs.scroll.noDataText;
+    },
+    getList(){
+      getBook().then(res=>{
+ this.books=res.data.reverse();
+}).catch(err=>{
+console.log(err);
+})
+    },
+    remove(id){
+      removeBook(id).then(
+        res=>{
+this.books=this.books.filter(item=>item.id!=id);
+        }
+      ).catch(err=>{
+console.log(err);
+    })
+
     }
-  }
-
 }
-
+}
 </script>
 <style lang='less' scoped>
 .list{
@@ -96,7 +109,6 @@ console.log(err);
     height: 1.4rem;
     width: 2.2rem;
     margin-left: .1rem;
-    padding: .1rem 0;
     box-sizing: border-box;
 flex-direction: column;
 justify-content: flex-start;
