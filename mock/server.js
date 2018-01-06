@@ -29,16 +29,21 @@ http.createServer(function(req, res) {
             switch (req.method) {
                 case "GET":
                     read(function(data) {
-                        res.end(JSON.stringify(data));
+                        if (_id) {
+                            let book = data.find(item => item.id == _id);
+                            res.end(JSON.stringify(book));
+                        } else {
+                            res.end(JSON.stringify(data));
+                        }
                     })
                     break;
                 case "POST":
-                    let str = '';
+                    let str1 = '';
                     req.on('data', function(data) {
-                        str += data;
+                        str1 += data;
                     });
                     req.on('end', function() {
-                        var book = JSON.parse(str);
+                        let book1 = JSON.parse(str1);
                         read(function(books) {
                             book.id = books.length > 0 ? books.length : 1;
                             books.push(book);
@@ -50,8 +55,7 @@ http.createServer(function(req, res) {
                     break;
                 case "DELETE":
                     read(function(books) {
-                        console.log(books.id);
-                        console.log(_id);
+
                         books = books.filter(item => item.id != _id);
                         write(books, function() {
                             res.end(JSON.stringify({}));
@@ -60,6 +64,28 @@ http.createServer(function(req, res) {
                     });
                     break;
                 case "PUT":
+                    let str2 = '';
+                    req.on('data', function(data) {
+                        str2 += data;
+                    });
+                    req.on('end', function() {
+                        let book2 = JSON.parse(str2);
+                        read(function(books) {
+                            books = books.map(item => {
+                                    if (item.id == _id) {
+                                        return book2;
+                                    }
+                                    return item;
+                                }
+
+                            )
+                            write(books, function() {
+                                JSON.stringify(book2);
+                            });
+                        });
+
+
+                    })
                     break;
             }
         }

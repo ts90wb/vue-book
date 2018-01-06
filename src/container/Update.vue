@@ -1,6 +1,6 @@
 <template>
     <div>
-<m-header title="添加页"></m-header>
+<m-header title="修改页"></m-header>
 <div class="add">
 <div class="group">
   <label for="book-name">书名:</label>
@@ -16,13 +16,14 @@
 </div>
 </div>
 <div class="btn">
-<button @click="add">添加图书</button>
+<router-link tag="button" to="/list"  @click="update">修改图书</router-link>
+<button @click="backTo">返回</button>
 </div>
     </div>
 </template>
 <script>
 import MHeader from "components/MHeader";
-import {addBook} from 'api';
+import {getOneBook,updateBook} from "api";
 export default {
   data() {
     return {
@@ -33,15 +34,30 @@ export default {
       }
     };
   },
+  created() {
+  this.getBook();
+  },
   computed: {},
   components: { MHeader },
   methods: {
-    add(){
-addBook(this.book).then(res=>{
-this.$router.push('/list');
-});
+      getBook(){
+  getOneBook(this.$route.params.id).then(res=>{
+this.book=res.data;
+    })
+    },
+    update(){
+updateBook(this.$route.params.id,this.book).then(()=>{
+  this.$router.push('/list');
+})
+    },
+    backTo(){
+
     }
-  }
+
+  },
+     activated(){
+      this.getBook();
+    }
 };
 </script>
 <style scoped lang="less">

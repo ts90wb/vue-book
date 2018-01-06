@@ -10,7 +10,10 @@
         <div>
           <h4>{{item.bookName}}</h4>
           <span>{{item.content.length<=20?item.content:item.content.slice(0,20)+"..."}}</span>
+          <div class="btn">
           <button @click="remove(item.id)">删除</button>
+          <router-link tag="button" :to="{path:'/update/'+item.id}">修改</router-link>
+          </div>
         </div>
       </li>
     </ul>
@@ -126,6 +129,40 @@ h4{
       color: #666;
       font-size: .18rem;
       text-indent: .36rem;
+    }
+    .btn{
+        display: -webkit-flex;
+      display: flex;
+      height: .4rem;
+      width: 100%;
+      margin-left: 0;
+      margin-top: .1rem;
+      flex-direction:row;
+      justify-content: space-around;
+      button{
+        width: 30%;
+        font-weight: bold;
+      color: #666;
+      border:1px solid #eee;
+      border-radius:.05rem;
+      outline: none;
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#e1e1e1), to(#ddd));
+	background-image: -webkit-linear-gradient(#ededed, #ddd);
+  background-image: -o-linear-gradient(#ededed, #ddd);
+	background-image: -moz-linear-gradient(#ededed, #ddd);
+	text-shadow: 1px 1px 1px #fff;
+	background-color: #e1e1e1;
+&:hover {
+	border: 1px solid #b0b0b0;
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ddd), to(#e1e1e1));
+	background-image: -webkit-linear-gradient(#ddd, #ededed);
+  background-image: -o-linear-gradient(#ddd, #ededed);
+	background-image: -moz-linear-gradient(#ddd, #ededed);
+	background-color: #ededed;
+}
+&:active {border: 1px solid #666;}
+
+      }
     }
     }
 

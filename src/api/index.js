@@ -14,3 +14,9 @@ export function addBook(data) {
 export function removeBook(id) {
     return axios.delete('/api/book?id=' + id);
 }
+export function getOneBook(id) {
+    return axios.get('/api/book?id=' + id);
+}
+export function updateBook(id, data) {
+    return axios.put('/api/book?id=' + id, data);
+}

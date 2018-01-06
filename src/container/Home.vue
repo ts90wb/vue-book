@@ -45,6 +45,7 @@ getHot().then(res=>{
               console.log(err);
 });
         },
+
         computed: {},
         components: {MHeader,Slider,Loading},
         methods: {}

@@ -1,13 +1,13 @@
 <!-- by your name -->
 <template>
 <div>
-  <keep-alive>
     <transition name="trans">
+  <keep-alive>
   <router-view class="page"></router-view>
-    </transition>
   </keep-alive>
+    </transition>
         <div class="footer-blank"></div>
-  <tab ></tab>
+  <tab></tab>
 </div>
 </template>
 
