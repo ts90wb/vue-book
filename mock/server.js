@@ -80,7 +80,7 @@ http.createServer(function(req, res) {
 
                             )
                             write(books, function() {
-                                JSON.stringify(book2);
+                                res.end(JSON.stringify(book2));
                             });
                         });
 

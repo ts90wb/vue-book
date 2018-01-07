@@ -36,6 +36,7 @@ export default {
 created(){
 this.getList();
 },
+
   components: {MHeader},
   computed: {},
   methods: {

@@ -28,10 +28,10 @@ export default {
 
 .page{
   position: absolute;
-  left: 0;
   top: 0;
-  bottom:.85rem;
-  width: 100%;
+  left:0;
+  bottom: .85rem;
+width:100%;
 }
 .footer-blank{
   width: 100%;

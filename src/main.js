@@ -11,9 +11,8 @@ Vue.use(VueLazyLoad);
 Vue.use(ElementUI);
 Vue.use(VueScroller);
 
-
 /* eslint-disable no-new */
-new Vue({
+var vm = new Vue({
     el: '#app',
     router,
     // render:h=>(App)

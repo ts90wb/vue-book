@@ -16,7 +16,7 @@
 </div>
 </div>
 <div class="btn">
-<router-link tag="button" to="/list"  @click="update">修改图书</router-link>
+<button  @click="update">修改图书</button>
 <button @click="backTo">返回</button>
 </div>
     </div>
@@ -45,13 +45,14 @@ export default {
 this.book=res.data;
     })
     },
+
     update(){
 updateBook(this.$route.params.id,this.book).then(()=>{
   this.$router.push('/list');
 })
     },
     backTo(){
-
+this.$router.go(-1);
     }
 
   },
