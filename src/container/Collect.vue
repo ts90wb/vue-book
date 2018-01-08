@@ -29,3 +29,4 @@ mounted(){
   margin-left: .2rem;
 }
 </style>
+

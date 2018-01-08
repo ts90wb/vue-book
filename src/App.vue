@@ -12,41 +12,41 @@
 </template>
 
 <script>
-import Tab from 'components/Tab'
+import Tab from "components/Tab";
 export default {
-  data () {
-    return {
-    };
+  data() {
+    return {};
   },
-  components: {Tab},
+  components: { Tab },
   computed: {},
   methods: {}
-}
-
+};
 </script>
 <style lang='less' scoped>
-
-.page{
+.page {
   position: absolute;
   top: 0;
-  left:0;
-  bottom: .85rem;
-width:100%;
-}
-.footer-blank{
+  left: 0;
+  bottom: 0.85rem;
   width: 100%;
-  height: .85rem;
+}
+.footer-blank {
+  width: 100%;
+  height: 85px;
 }
 .trans-enter{
-  transform: translateX(100%);
+  transform: translate(100%);
 }
-.trans-enter-active{
-  transition: 1s linear;
+.trans-enter-active {
+  transition: all .5s;
+
 }
-.trans-leave-active{
-  transform: translateX(-100%);
-  transition: 1s linear;
+.trans-leave-active {
+  transition: all .5s;
+  transform: translate(-100%);
+
 }
 
-
+// .trans-leave-to {
+// }
 </style>
