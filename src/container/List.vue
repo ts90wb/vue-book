@@ -5,10 +5,13 @@
     <m-header title="列表页" ref="close"></m-header>
     <scroller :on-refresh="refresh" ref="scroll">
       <ul class="list">
-      <li v-for="item in books" :key="item.id">
+      <li v-for="(item,index) in books" :key="item.id">
         <img v-lazy="item.bookCover" alt="vue-book封面图片" width="138" height="200">
-        <div>
+        <div class="descri">
+          <div class="book-title">
           <h4>{{item.bookName}}</h4>
+<i class="iconfont" @click="collectBook(item)" :class="flagCollect[item.id]?'icon-collect-active':'icon-collect'"></i>
+          </div>
           <span>{{item.content.length<=20?item.content:item.content.slice(0,20)+"..."}}</span>
           <div class="btn">
           <button @click="remove(item.id)">删除</button>
@@ -23,6 +26,8 @@
 </template>
 
 <script>
+import {mapState,mapMutations} from 'vuex';
+import * as Types from 'store/mutation-types'
 import {getBook,removeBook} from 'api';
 import MHeader from 'components/MHeader';
 export default {
@@ -38,8 +43,12 @@ this.getList();
 },
 
   components: {MHeader},
-  computed: {},
+  computed: {
+    ...mapState(['flagCollect']),
+
+  },
   methods: {
+    ...mapMutations([Types.ADD_COLLECT,Types.REMOVE_COLLECT]),
     refresh(){
       this.getList();
       this.$refs.scroll.finishPullToRefresh();
@@ -61,6 +70,18 @@ this.books=this.books.filter(item=>item.id!=id);
 console.log(err);
     })
 
+    },
+    collectBook(book){
+      const _id=book.id;
+const flag = this.$store.state.collect.some(item => item.id == _id);
+      if(flag){
+       this[Types.REMOVE_COLLECT](_id);
+      }else{
+      this[Types.ADD_COLLECT](book);
+      this.$router.push('/collect');
+
+      }
+      this.getList();
     }
 }
 }
@@ -107,8 +128,7 @@ console.log(err);
         opacity: 1;
       }
     }
-    div{
-       display: -webkit-flex;
+    .descri{
     display: flex;
     height: 1.4rem;
     width: 2.2rem;
@@ -116,6 +136,12 @@ console.log(err);
     box-sizing: border-box;
 flex-direction: column;
 justify-content: flex-start;
+.book-title{
+  display: flex;
+  width: 100%;
+  flex-direction:row;
+  justify-content: space-between;
+  align-items: center;
 h4{
   height: .4rem;
   line-height: .4rem;
@@ -124,6 +150,10 @@ h4{
       color: #999;
 
     }
+    i{
+      font-size: 26px;
+    }
+}
     span{
       margin-top: .1rem;
       text-align: left;

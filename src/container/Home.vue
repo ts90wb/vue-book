@@ -4,7 +4,7 @@
       <div v-if="sliders.length">
         <slider :data="sliders"></slider>
       </div>
-      <div class="main-loading" v-show="isLoading.main">
+      <div class="main-loading" v-show="isLoading.main" ref="test" data-test="45">
        <loading ></loading>
        </div>
       <h3>最新上架</h3>
