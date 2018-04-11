@@ -1,21 +1,31 @@
 # vue-book
 
-> A Vue.js project
+> A Vue.js project  实现图书增删改查
 
-## Build Setup
+## 技术栈
+- vue
+- vue-router
+- vuex
+- axios
+- nodejs
+
+## 项目启动
 
 ``` bash
-# install dependencies
+# 安装依赖
 npm install
 
-# serve with hot reload at localhost:8080
+#起服务
+mock文件下 命令行 node server
+
+# 8080端口热加载
 npm run dev
 
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
 ```
+## 项目部分截图
+![](https://i.imgur.com/DaUG4jI.png)
+![](https://i.imgur.com/2NpJKXk.png)
+![](https://i.imgur.com/MukkwMb.png)
+![](https://i.imgur.com/gLuKD7K.png)
+![](https://i.imgur.com/M47oZPJ.png)
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
